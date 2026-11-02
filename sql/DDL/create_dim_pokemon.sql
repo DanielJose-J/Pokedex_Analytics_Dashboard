@@ -13,5 +13,12 @@ CREATE OR REPLACE TABLE model.DimPokemon (
     ,Weight_KG DOUBLE             -- Weight in kilograms; source weight divided by 10
     ,Sprite_URL VARCHAR           -- Default front sprite URL for the Pokémon gallery
     ,Artwork_URL VARCHAR          -- Official artwork URL for the Pokémon profile
+    ,HP INTEGER                  -- Base health stat
+    ,Attack INTEGER              -- Base physical attack stat
+    ,Defense INTEGER             -- Base physical defense stat
+    ,Special_Attack INTEGER      -- Base special attack stat
+    ,Special_Defense INTEGER     -- Base special defense stat
+    ,Speed INTEGER               -- Base speed stat
+    ,Base_Stat_Total INTEGER      -- Sum of the six base stats
 );
 

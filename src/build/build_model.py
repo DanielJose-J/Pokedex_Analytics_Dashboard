@@ -5,7 +5,7 @@ import duckdb
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SETUP = "--setup" in sys.argv
 
-TABLES = ["dim_generation", "dim_pokemon"]
+TABLES = ["dim_generation", "dim_pokemon", "dim_type"]
 
 conn = duckdb.connect(str(PROJECT_ROOT / "data/pokedex.duckdb"))
 
