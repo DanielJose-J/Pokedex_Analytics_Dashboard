@@ -44,5 +44,35 @@ try:
         LIMIT 5
     """).show()
 
+    print("\n--- Sample Pokémon type assignments ---")
+
+    conn.sql("""
+        SELECT
+            p.Pokemon_ID
+            ,p.Pokemon_Name
+            ,t.Type_Name
+            ,b.Type_Slot
+        FROM model.BridgePokemonType AS b
+        LEFT JOIN model.DimPokemon AS p
+            ON b.Pokemon_ID = p.Pokemon_ID
+        LEFT JOIN model.DimType AS t
+            ON b.Type_ID = t.Type_ID
+        WHERE b.Pokemon_ID IN (1, 4, 7)
+        ORDER BY b.Pokemon_ID, b.Type_Slot
+    """).show()
+
+    print("\n--- Bridge records with missing dimension matches ---")
+
+    conn.sql("""
+        SELECT COUNT(*) AS Missing_Matches
+        FROM model.BridgePokemonType AS b
+        LEFT JOIN model.DimPokemon AS p
+            ON b.Pokemon_ID = p.Pokemon_ID
+        LEFT JOIN model.DimType AS t
+            ON b.Type_ID = t.Type_ID
+        WHERE p.Pokemon_ID IS NULL
+            OR t.Type_ID IS NULL
+    """).show()
+
 finally:
     conn.close()
