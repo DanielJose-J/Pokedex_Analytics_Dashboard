@@ -1,0 +1,16 @@
+# Python environment
+.venv/
+
+# Ignore data except the raw JSON files
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local credentials
+.env
+.env.*
+
+# macOS files
+.DS_Store
